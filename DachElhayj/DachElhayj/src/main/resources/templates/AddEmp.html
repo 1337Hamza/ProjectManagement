@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employee</title>
+    <style>
+        /* Keep the body styling from the login template */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+            /* Use the relative path to your local GIF file */
+            background-image: url('/image_processing20210120-23045-1l42m3s.gif');
+            /* Adjust background properties as needed */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* Other styles */
+
+            font-family: Arial, sans-serif;
+
+        }
+        /* Match the card styling with the login template */
+        .card {
+            width: 340px;
+            background: #2c2c2c;
+            padding: 47px;
+            color: #fff;
+            border-radius: 17px;
+            font-size: 1.3em;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Adjust input and button styling */
+        .card input[type="text"],
+        .card input[type="tel"],
+        .card input[type="password"],
+        .card button,
+        .card a.button {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 13px 18px;
+            margin: 10px 0;
+            font-size: 0.8em;
+            border-radius: 100px;
+            background: #3c3c3c;
+            color: #fff;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            text-decoration: none; /* Remove underline for anchor */
+            display: inline-block; /* Ensure anchor behaves like a button */
+            text-align: center;
+        }
+
+        /* Adjust button hover effect */
+        .card button:hover,
+        .card a.button:hover {
+            background: linear-gradient(144deg, #1e1e1e, 20%, #1e1e1e 50%, #1e1e1e);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        /* Adjust the header style */
+        .card .h1 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        /* Adjust the form width for smaller screens */
+        @media only screen and (max-width: 600px) {
+            .card {
+                width: 70%;
+                padding: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="h1">New Employee</div>
+    <form method="post" th:action="@{/admin/saveEmp}">
+        <input placeholder="Full Name" id="nom" type="text" name="fullName" th:value="${employee.fullName}">
+        <span class="text-danger" th:errors="${employee.fullName}"></span>
+        <input placeholder="Phone Number" id="phonenumber" type="tel" name="PhoneNumber" th:value="${employee.PhoneNumber}">
+        <span class="text-danger" th:errors="${employee.PhoneNumber}"></span>
+        <input placeholder="Email" id="email" type="text" name="Email" th:value="${employee.Email}">
+        <span class="text-danger" th:errors="${employee.Email}"></span>
+        <button class="btn" type="submit">Save</button>
+    </form>
+    <!-- Add the back button here with the same class as the save button -->
+    <a th:href="@{/user/Responsibles}" class="button">Back</a>
+</div>
+</body>
+</html>

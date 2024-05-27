@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Project</title>
+    <style>
+        /* Keep the body styling from the login template */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+            /* Use the relative path to your local GIF file */
+            background-image: url('/image_processing20210120-23045-1l42m3s.gif');
+            /* Adjust background properties as needed */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* Other styles */
+
+            font-family: Arial, sans-serif;
+
+        }
+        /* Match the card styling with the login template */
+        .card {
+            width: 340px;
+            background: #2c2c2c;
+            padding: 47px;
+            color: #fff;
+            border-radius: 17px;
+            font-size: 1.3em;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Adjust input and button styling */
+        .card input[type="text"],
+        .card input[type="tel"],
+        .card input[type="date"],
+        .card button {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 13px 18px;
+            margin: 10px 0;
+            font-size: 0.8em;
+            border-radius: 100px;
+            background: #3c3c3c;
+            color: #fff;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+        }
+
+        /* Adjust button hover effect */
+        .card button:hover {
+            background: linear-gradient(144deg, #1e1e1e, 20%, #1e1e1e 50%, #1e1e1e);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        /* Adjust the header style */
+        .card .card-header {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        /* Adjust the form width for smaller screens */
+        @media only screen and (max-width: 600px) {
+            .card {
+                width: 70%;
+                padding: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="card-header">New Project</div>
+    <form method="post" th:action="@{/admin/saveProj}">
+        <div class="mb-2">
+            <label for="nom" class="form-label">Name</label>
+            <input class="form-control" id="nom" type="text" name="name" th:value="${project.name}">
+            <span class="text-danger" th:errors="${project.name}"></span>
+        </div>
+        <div class="mb-2">
+            <label for="StartDate" class="form-label">Start Date</label>
+            <input class="form-control" id="StartDate" type="date" name="StartDate" th:value="${project.StartDate}">
+            <span class="text-danger" th:errors="${project.StartDate}"></span>
+        </div>
+        <div class="mb-2">
+            <label for="EndDate" class="form-label">End Date</label>
+            <input class="form-control" id="EndDate" type="date" name="EndDate" th:value="${project.EndDate}">
+            <span class="text-danger" th:errors="${project.EndDate}"></span>
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+</div>
+</body>
+</html>
